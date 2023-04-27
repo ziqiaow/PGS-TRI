@@ -1,5 +1,6 @@
-#Family-based PRS TDT
+#Family-based PGS and PGSxE Risk Parameter Estimation
 #Likelihood and parameter estimation
+#Simulate data
 #March 29, 2023
 #--------------------------------------------------
 sim_prospective_population=function(n_fam=100000,cor_e_prs=TRUE,cor_strat=0.25,rho2=0.25,rho_mf=0,alpha_fam=-5.5,betaG_normPRS=0.4,betaE_bin=0.2, betaE_norm=-0.6,betaGE_normPRS_bin=0.2, betaGE_normPRS_norm=-0.4,envir=TRUE){
