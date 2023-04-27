@@ -5,7 +5,7 @@
 #April 26, 2023
 #------------------------------------------------------------------
 
-PGScpt = function(pgs_offspring, #The PGS values of the affected probands (children). A vector of length N, no missing values are allowed
+pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (children). A vector of length N, no missing values are allowed
                    pgs_mother, #The PGS values of mothers that corresponds to the children. A vector of same length N, no missing values are allowed
                    pgs_father, #The PGS values of fathers that corresponds to the children. A vector of same length N, no missing values are allowed
                    GxE_int = FALSE, #Whether there are interaction effect between pgs and environmental variables that are of interest in the model. If FALSE, then "formula" and "E" are ignored. 
