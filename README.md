@@ -1,4 +1,4 @@
-# PGScpt
+# pgs.cpt
 A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models from Case-Parent Trios
 
 ## Example Analysis
