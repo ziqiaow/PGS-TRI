@@ -70,8 +70,8 @@ startTime <- Sys.time()
 res_sim = PGScpt(pgs_offspring = PRS_fam[,1], 
                  pgs_mother = PRS_fam[,2], 
                  pgs_father = PRS_fam[,3],
-                 GxE_int = TRUE,
-                 formula = ~ factor(E_sim_bin)+E_sim_norm,
+                 GxE_int = TRUE, #If GxE_int is FALSE, then fit a model without interaction effect between PGSxE. "formula" and "E" will be ignored in the function.
+                 formula = ~ factor(E_sim_bin)+E_sim_norm, #For categorical variables, remember to add factor().
                  E = envir, 
                  side = 2,
                  numDeriv = F)
