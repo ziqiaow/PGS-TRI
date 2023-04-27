@@ -67,7 +67,7 @@ envir = dat$E_sim[id,]
 Fit our proposed method to the randomly selected 1000 trios
 ```
 startTime <- Sys.time()
-res_sim = PGScpt(pgs_offspring = PRS_fam[,1], 
+res_sim = pgs.cpt(pgs_offspring = PRS_fam[,1], 
                  pgs_mother = PRS_fam[,2], 
                  pgs_father = PRS_fam[,3],
                  GxE_int = TRUE, #If GxE_int is FALSE, then fit a model without interaction effect between PGSxE. "formula" and "E" will be ignored in the function.
