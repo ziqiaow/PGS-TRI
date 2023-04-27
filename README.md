@@ -8,7 +8,7 @@ rm(list = ls())
 source("./R/PGScpt.R")
 source("./R/simulation.R")
 ```
-First simulate 200000 families based on a population disease model with two independent environmental variables $E_1$ (binary) and $E_2$ (continuous). Assume the marginal disease prevalence is Pr(D=1)=0.01.
+First simulate 200000 families based on a population disease risk model following a logistic regression with PGS main effect, two independent environmental variables $E_1$ (binary) and $E_2$ (continuous), and their interaction effect with PGS. Assume the marginal disease prevalence is Pr(D=1)=0.01.
 ```
 
 #example analysis
@@ -17,8 +17,8 @@ set.seed(04262023)
 #Generate 200000 families with offsprings disease prevalence to be 1%
 dat = sim_prospective_population(n_fam=200000, #Number of families in the population
                                cor_e_prs=F, #Assuming no correlation between PGS and E
-                               cor_strat=0.25,
-                               rho2=0.25,
+                               cor_strat=0.25, #Random effect term to create population stratification bias in PGS
+                               rho2=0.25, #Random effect term to create population stratification bias in PGSxE
                                rho_mf=0, #No assortative mating
                                alpha_fam=-5.5, #Intercept
                                betaG_normPRS=0.4, #Main effect of PGS
@@ -60,8 +60,8 @@ table(dat$D_sim)
 Randomly select 1000 affected probands and their families
 ```
 id = sample(which(dat$D_sim==1),size=1000,replace=F)
-PRS_fam=dat$pgs_fam[id,]
-envir=dat$E_sim[id,]
+PRS_fam = dat$pgs_fam[id,]
+envir = dat$E_sim[id,]
 ```
 
 Fit our proposed method to the randomly selected 1000 trios
@@ -82,7 +82,7 @@ endTime <- Sys.time()
 Print the final results.
 ```
 res_sim$res_beta
-# Estimate Std.Error   Z.value     Pvalue
+#                           Estimate   Std.Error   Z.value   Pvalue
 # PGS                       0.38144034 0.10852411  3.5147981 0.0004400885
 # PGS x factor(E_sim_bin)1 -0.09540741 0.13803817 -0.6911669 0.4894606688
 # PGS x E_sim_norm          0.06266047 0.06394153  0.9799652 0.3271033111
