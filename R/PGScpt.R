@@ -1,6 +1,6 @@
 #------------------------------------------------------------------
 #PGS in case-parent trio analysis
-#1. The proposed retrospective likelihood-based method, PGScpt
+#1. The proposed retrospective likelihood-based method, pgs.cpt()
 #2. pTDT test proposed by Weiner et al., Nat Genet 2017
 #April 26, 2023
 #------------------------------------------------------------------
