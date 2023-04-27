@@ -16,7 +16,7 @@ set.seed(04262023)
 
 #Generate 200000 families with offsprings disease prevalence to be 1%
 dat = sim_prospective_population(n_fam=200000, #Number of families in the population
-                               cor_e_prs=F, #Assuming no correlation between PGS and E
+                               cor_e_prs=FALSE, #Assuming no correlation between PGS and E
                                cor_strat=0.25, #Random effect term to create population stratification bias in PGS
                                rho2=0.25, #Random effect term to create population stratification bias in PGSxE
                                rho_mf=0, #No assortative mating
@@ -26,7 +26,7 @@ dat = sim_prospective_population(n_fam=200000, #Number of families in the popula
                                betaE_norm=0.2, #Main effect of E2
                                betaGE_normPRS_bin=0, #Interaction effect of PGSxE1
                                betaGE_normPRS_norm=0, #Interaction effect of PGSxE2
-                               envir=T)
+                               envir=TRUE) #Include environmental variables in the disease risk model
 
 
 ```
