@@ -5,6 +5,11 @@ A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models f
 We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [pgs.cpt](R/PGScpt.R). The R function to simulate data is available here [simulation](R/simulation.R).
 ```
 rm(list = ls())
+require(devtools)
+source_url("https://github.com/ziqiaow/pgs.cpt/blob/main/R/PGScpt.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/pgs.cpt/blob/main/R/simulation.R?raw=TRUE")
+
+#If directly downloaded from Github 
 source("./R/PGScpt.R")
 source("./R/simulation.R")
 ```
