@@ -84,7 +84,7 @@ res_sim = pgs.cpt(pgs_offspring = PRS_fam[,1],
 endTime <- Sys.time()
 ```
 
-Print the final results.
+Print the final results. "Estimate" refers to log odds ratio (log OR) for rare diseases. 
 ```
 res_sim$res_beta
 #                           Estimate   Std.Error   Z.value   Pvalue
@@ -92,6 +92,7 @@ res_sim$res_beta
 # PGS x factor(E_sim_bin)1 -0.09540741 0.13803817 -0.6911669 0.4894606688
 # PGS x E_sim_norm          0.06266047 0.06394153  0.9799652 0.3271033111
 ```
+The original simulated data for PGS main effect was 0.4 and no interaction effect with E.
 
 Print running time.
 ```
