@@ -1,8 +1,8 @@
-# pgs.cpt
+# PRS-TRI
 A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models from Case-Parent Trios
 
 ## Example Analysis
-We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [pgs.cpt](R/PGScpt.R). The R function to simulate data is available here [simulation](R/simulation.R).
+We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [PRS-TRI](R/PGScpt.R). The R function to simulate data is available here [simulation](R/simulation.R).
 ```
 rm(list = ls())
 require(devtools)
