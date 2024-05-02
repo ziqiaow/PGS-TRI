@@ -2,7 +2,7 @@
 #PGS in case-parent trio analysis
 #1. The proposed retrospective likelihood-based method, pgs.cpt()
 #2. pTDT test proposed by Weiner et al., Nat Genet 2017
-#April 26, 2023
+#April 26, 2024
 #------------------------------------------------------------------
 
 pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (children). A vector of length N, no missing values are allowed
