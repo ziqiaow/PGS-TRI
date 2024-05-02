@@ -9,9 +9,11 @@ pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (chil
                    pgs_mother, #The PGS values of mothers that corresponds to the children. A vector of same length N, no missing values are allowed
                    pgs_father, #The PGS values of fathers that corresponds to the children. A vector of same length N, no missing values are allowed
                    GxE_int = FALSE, #Whether there are interaction effect between pgs and environmental variables that are of interest in the model. If FALSE, then "formula" and "E" are ignored. 
+                   parental_nurture = FALSE, #Whether to estimate potential parental nurturing effect, returns an estimated difference of mother and father parental effect (delta_MF = beta_M - beta_F). Note that when this is TRUE, GxE_int will be ignored.
                    formula= ~ envir1 +envir2+factor(s1), #The environmental variables of interest for the PGSxE interaction effect
                    E, #The environmental variables of interest for interaction effect. A vector of length N for one environmental variable or a data frame/data matrix of NxP for P environmental variables are allowed.
                    side = 2, #Sided of the Wald test, default is 2-sided.
+                   smalltriosize = FALSE, #Whether number of trios is small (<100), if TRUE, a t test will be used rather than a wald test.
                    numDeriv = FALSE #Whether to use the score function (FALSE) or numerically derive (TRUE) for parameter estimation, by default, using the score function (it is computationally faster and more accurate). 
 ){
   
@@ -23,6 +25,7 @@ pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (chil
   
   
   pgs.tdt=function(pgs_c,pgs_m,pgs_f,side0=2){
+    cat(paste("The complete number of trios is",length(pgs_c),"\n"))
     var_fam=1/2*(pgs_m-pgs_f)^2
     beta_hat=2*sum(pgs_c-(pgs_m+pgs_f)/2)/sum(var_fam)
     var_beta_hat=2/sum(var_fam)
@@ -48,12 +51,113 @@ pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (chil
       ret
     }
     
-    res_beta=res.sum(sided = side0)
+    res.sum.t=function (parms=beta_hat, cov=var_beta_hat, df0, sided) 
+    {
+      if (sided != 1) 
+        sided <- 2
+      cols <- c("Estimate", "Std.Error", "t.value", "Pvalue")
+      n <- length(parms)
+      ret <- matrix(data = NA, nrow = n, ncol = 4)
+      pnames <- names(parms)
+      rownames(ret) <- pnames
+      colnames(ret) <- cols
+      ret[, 1] <- parms
+      cov <- sqrt(cov)
+      if (is.null(pnames)) 
+        pnames <- 1:n
+      ret[, 2] <- cov
+      ret[, 3] <- parms/cov
+      ret[, 4] <- sided * pt(abs(ret[, 3]), df0,lower.tail = F)
+      ret
+    }
     
+    if(smalltriosize == FALSE){
+    res_beta=res.sum(sided = side0)} else {
+      res_beta=res.sum.t(df0 = (length(pgs_c)-1) ,sided = side0)
+    }
+    rownames(res_beta)="PGS"
     res=list(res_beta=res_beta, var_fam=var_fam)
     return(res)
   }
   
+  
+  
+  pgs.tdt.nurture=function(pgs_c,pgs_m,pgs_f,side0=2){
+    cat(paste("The complete number of trios is",length(pgs_c),"\n"))
+    n_family=length(pgs_c)
+    x_bar=sum(pgs_m-pgs_f)/n_family
+    
+    var_fam_sum=1/2*sum((pgs_m-pgs_f)^2)-1/2/n_family*(sum(pgs_m-pgs_f))^2
+    delta_mf=sum(pgs_m-pgs_f)/var_fam_sum
+    var_delta=2/var_fam_sum
+
+    beta_hat=2*sum(pgs_c-(pgs_m+pgs_f)/2)/var_fam_sum
+    var_beta_hat=2/var_fam_sum
+    
+    #Summarize the results
+    res.sum=function (parms=beta_hat, cov=var_beta_hat, sided) 
+    {
+      if (sided != 1) 
+        sided <- 2
+      cols <- c("Estimate", "Std.Error", "Z.value", "Pvalue")
+      n <- length(parms)
+      ret <- matrix(data = NA, nrow = n, ncol = 4)
+      pnames <- names(parms)
+      rownames(ret) <- pnames
+      colnames(ret) <- cols
+      ret[, 1] <- parms
+      # cols <- colnames(cov)
+      #cov <- sqrt(diag(cov))
+      cov <- sqrt(cov)
+      # names(cov) <- cols
+      if (is.null(pnames)) 
+        pnames <- 1:n
+      # cov <- cov[pnames]
+      ret[, 2] <- cov
+      ret[, 3] <- parms/cov
+      ret[, 4] <- sided * pnorm(abs(ret[, 3]), lower.tail = FALSE)
+      ret
+    }
+    
+    res.sum.t=function (parms=beta_hat, cov=var_beta_hat, df0, sided) 
+    {
+      if (sided != 1) 
+        sided <- 2
+      cols <- c("Estimate", "Std.Error", "t.value", "Pvalue")
+      n <- length(parms)
+      ret <- matrix(data = NA, nrow = n, ncol = 4)
+      pnames <- names(parms)
+      rownames(ret) <- pnames
+      colnames(ret) <- cols
+      ret[, 1] <- parms
+      cov <- sqrt(cov)
+      if (is.null(pnames)) 
+        pnames <- 1:n
+      ret[, 2] <- cov
+      ret[, 3] <- parms/cov
+      ret[, 4] <- sided * pt(abs(ret[, 3]), df0,lower.tail = F)
+      ret
+    }
+    
+    if(smalltriosize == FALSE){
+      
+      res_beta=res.sum(sided = side0)
+      res_delta=res.sum(parms=delta_mf, cov=var_delta, sided= side0) } else {
+        
+      res_beta=res.sum.t(df0 = (length(pgs_c)-1) ,sided = side0)
+      res_delta=res.sum.t(parms=delta_mf, cov=var_delta, df0 = (length(pgs_c)-1), sided= side0)
+      
+      }
+    
+   # res_beta=res.sum(sided = side0)
+    rownames(res_beta)="PGS"
+   # res_delta=res.sum(parms=delta_mf, cov=var_delta, sided= side0)
+    rownames(res_delta)="Nurture_Diff_MF"
+    
+    res=list(res_beta=res_beta,res_delta=res_delta,var_fam_sum=var_fam_sum)
+    return(res)
+    
+  }
   
   pgs.tdt.gxe=function(pgs_c,pgs_m,pgs_f,formula0,envir0,side0=2,numDeriv0=F){
     
@@ -63,8 +167,8 @@ pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (chil
     
     #Remove NA values in the environmental variables
     id=complete.cases(envir)
-    if( (length(formula0[[2]]) == 1 & is.null(dim(envir)))){
-      
+    #if( (length(formula0[[2]]) == 1 & is.null(dim(envir)))){
+      if(  is.null(dim(envir))){
       envir=envir[id]
       
     } else {
@@ -93,7 +197,7 @@ pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (chil
     
     param0=c(beta_ini,beta_ge_ini)
     if(length(beta_ge_ini)==1){
-      names(param0)=c("PGS",paste0("PGS x ",formula0[[2]])) #"beta_pgsxE")
+      names(param0)=c("PGS",paste0("PGS x ",labels(terms(formula0)))) #"beta_pgsxE")
     } else {
       names(param0)=c("PGS",paste0("PGS x ",colnames(envir)))
     }
@@ -185,8 +289,34 @@ pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (chil
       ret
     }
     
+    res.sum.t=function (parms=ret$par, cov=cov1, df0, sided) 
+    {
+      if (sided != 1) 
+        sided <- 2
+      cols <- c("Estimate", "Std.Error", "t.value", "Pvalue")
+      n <- length(parms)
+      ret <- matrix(data = NA, nrow = n, ncol = 4)
+      pnames <- names(parms)
+      rownames(ret) <- pnames
+      colnames(ret) <- cols
+      ret[, 1] <- parms
+      if (is.null(pnames)) 
+        pnames <- 1:n
+      cov <- cov[pnames]
+      ret[, 2] <- cov
+      ret[, 3] <- parms/cov
+      ret[, 4] <- sided * pt(abs(ret[, 3]), df0,lower.tail = F)
+      ret
+    }
     
-    res_beta=res.sum(sided = side0)
+    if(smalltriosize == FALSE){
+      
+      res_beta=res.sum(sided = side0) } else {
+        
+      res_beta=res.sum.t(df0 = (length(pgs_c)-1) ,sided = side0)
+        
+      }
+    
     
     res=list(res_beta=res_beta, var_fam=var_fam)
     return(res)
@@ -194,8 +324,14 @@ pgs.cpt = function(pgs_offspring, #The PGS values of the affected probands (chil
   }
   
   
-  
-  if (GxE_int == FALSE){
+  if (parental_nurture == TRUE){
+    
+    pgs.tdt.nurture(pgs_c = pgs_offspring,
+                    pgs_m = pgs_mother,
+                    pgs_f = pgs_father,
+                    side0 = side)
+    
+  } else if (GxE_int == FALSE){
     
     pgs.tdt(pgs_c = pgs_offspring,
             pgs_m = pgs_mother,
