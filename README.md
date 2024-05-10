@@ -6,8 +6,8 @@ We provide a simple example for running our proposed method using simulated data
 ```
 rm(list = ls())
 require(devtools)
-source_url("https://github.com/ziqiaow/pgs.cpt/blob/main/R/PGScpt.R?raw=TRUE")
-source_url("https://github.com/ziqiaow/pgs.cpt/blob/main/R/simulation.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/PRS-TRI/blob/main/R/PGScpt.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/PRS-TRI/blob/main/R/simulation.R?raw=TRUE")
 
 #If directly downloaded the R files from Github to your local directory 
 source("./R/PGScpt.R")
