@@ -35,7 +35,6 @@ dat = sim_prospective_population(n_fam=200000, #Number of families in the popula
                                cor_e_prs=FALSE, #Assuming no correlation between PGS and E
                                cor_strat=0.25, #Random effect term to create population stratification bias in PGS
                                rho2=0.25, #Random effect term to create population stratification bias in PGSxE
-                               rho_mf=0, #No assortative mating
                                alpha_fam=-5.5, #Intercept
                                betaG_normPRS=0.4, #Main effect of PGS
                                betaE_bin=0.2, #Main effect of E1
