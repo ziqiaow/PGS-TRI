@@ -15,8 +15,8 @@ If you only want to use specific functions, you can also do this
 ```
 rm(list = ls())
 require(devtools)
-source_url("https://github.com/ziqiaow/PGS-TRI/blob/main/R/PGS-TRI.R?raw=TRUE")
-source_url("https://github.com/ziqiaow/PGS-TRI/blob/main/R/simulation.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/PGS.TRI/blob/main/R/PGS-TRI.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/PGS.TRI/blob/main/R/simulation.R?raw=TRUE")
 
 #If directly downloaded the R files from Github to your local directory 
 source("./R/PGS-TRI.R")
