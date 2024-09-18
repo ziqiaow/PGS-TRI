@@ -23,6 +23,11 @@ source("./R/PGS-TRI.R")
 source("./R/simulation.R")
 ```
 
+## Required Data for the Analysis
+The required data as input for this software are simple: PGS values for mothers, fathers, and children are needed. If PGSxE interactions are also needed, then a set of environmental variables for children are required.  
+
+You can construct PGS for trios using weights available on previously reported sources trained in external data, such as from the [PGScatalog](https://www.pgscatalog.org/), following steps described for unrelated individuals using softwares such as PLINK/2.0.
+
 ## Example Analysis
 We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [PGS-TRI](R/PGS-TRI.R). The R function to simulate data is available here [simulation](R/simulation.R). We also provide the R function to run the polygenic TDT (pTDT) test [pTDT](R/pTDT.R) (originally proposed by Weiner et al, Nat Genet. 2017). For PGSxE analysis, the case-only method is also implemented here [case-only](R/case-only.R) (Allison et al, AJE 2019; Wang et al, AJE 2024).
 
