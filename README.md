@@ -91,7 +91,8 @@ res_sim = PGS.TRI(pgs_offspring = PRS_fam[,1],
                  pgs_father = PRS_fam[,3],
                  GxE_int = TRUE, #If GxE_int is FALSE, then fit a model without interaction effect between PGSxE. "formula" and "E" will be ignored in the function.
                  formula = ~ factor(E_sim_bin)+E_sim_norm, #For categorical variables, remember to add factor().
-                 E = envir, 
+                 E = envir,
+                 parental_indirect = FALSE, #If indirect polygenic effect from parents are considered, set this to TRUE.
                  side = 2)
 
 endTime <- Sys.time()
