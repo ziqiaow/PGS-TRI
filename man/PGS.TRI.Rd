@@ -9,7 +9,7 @@ PGS.TRI(
   pgs_mother,
   pgs_father,
   GxE_int = FALSE,
-  parental_nurture = FALSE,
+  parental_indirect = FALSE,
   formula = ~envir1 + envir2 + factor(s1),
   E,
   side = 2,
@@ -25,7 +25,7 @@ PGS.TRI(
 
 \item{GxE_int}{Whether there are interaction effect between pgs and environmental variables that are of interest in the model. If FALSE, then "formula" and "E" are ignored.}
 
-\item{parental_nurture}{Whether to estimate potential parental nurturing effect, returns an estimated difference of mother and father parental effect (delta_MF = beta_M - beta_F).}
+\item{parental_indirect}{Whether to estimate potential parental indirent effect, returns an estimated difference of mother and father parental effect (delta_MF = beta_M - beta_F).}
 
 \item{formula}{The environmental variables of interest for the PGSxE interaction effect}
 

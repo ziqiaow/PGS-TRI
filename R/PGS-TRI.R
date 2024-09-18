@@ -5,7 +5,7 @@
 #' @param pgs_mother The PGS values of mothers that corresponds to the children. A vector of same length N, no missing values are allowed
 #' @param pgs_father The PGS values of fathers that corresponds to the children. A vector of same length N, no missing values are allowed
 #' @param GxE_int Whether there are interaction effect between pgs and environmental variables that are of interest in the model. If FALSE, then "formula" and "E" are ignored.
-#' @param parental_nurture Whether to estimate potential parental nurturing effect, returns an estimated difference of mother and father parental effect (delta_MF = beta_M - beta_F).
+#' @param parental_indirect Whether to estimate potential parental indirent effect, returns an estimated difference of mother and father parental effect (delta_MF = beta_M - beta_F).
 #' @param formula The environmental variables of interest for the PGSxE interaction effect
 #' @param E The environmental variables of interest for interaction effect. A vector of length N for one environmental variable or a data frame/data matrix of NxP for P environmental variables are allowed.
 #' @param side Sided of the Wald test, default is 2-sided.
@@ -24,7 +24,7 @@ PGS.TRI = function(pgs_offspring, #The PGS values of the affected probands (chil
                    pgs_mother, #The PGS values of mothers that corresponds to the children. A vector of same length N, no missing values are allowed
                    pgs_father, #The PGS values of fathers that corresponds to the children. A vector of same length N, no missing values are allowed
                    GxE_int = FALSE, #Whether there are interaction effect between pgs and environmental variables that are of interest in the model. If FALSE, then "formula" and "E" are ignored.
-                   parental_nurture = FALSE, #Whether to estimate potential parental nurturing effect, returns an estimated difference of mother and father parental effect (delta_MF = beta_M - beta_F). Note that when this is TRUE, GxE_int will be ignored.
+                   parental_indirect = FALSE, #Whether to estimate potential parental nurturing effect, returns an estimated difference of mother and father parental effect (delta_MF = beta_M - beta_F). Note that when this is TRUE, GxE_int will be ignored.
                    formula= ~ envir1 +envir2+factor(s1), #The environmental variables of interest for the PGSxE interaction effect
                    E, #The environmental variables of interest for interaction effect. A vector of length N for one environmental variable or a data frame/data matrix of NxP for P environmental variables are allowed.
                    side = 2, #Sided of the Wald test, default is 2-sided.
@@ -129,7 +129,7 @@ PGS.TRI = function(pgs_offspring, #The PGS values of the affected probands (chil
       }
 
     rownames(res_beta)="PGS"
-    rownames(res_delta)="Nurture_Diff_MF"
+    rownames(res_delta)="Indirect_Diff_MF"
 
     res=list(res_beta=res_beta,res_delta=res_delta,var_fam_sum=var_fam_sum)
     return(res)
@@ -309,7 +309,7 @@ PGS.TRI = function(pgs_offspring, #The PGS values of the affected probands (chil
 
     }
 
-    rownames(res_delta)="Nurture_Diff_MF"
+    rownames(res_delta)="Indirect_Diff_MF"
 
     res=list(res_beta=res_beta,res_delta=res_delta,var_fam_sum=var_fam_sum)
     return(res)
@@ -317,7 +317,7 @@ PGS.TRI = function(pgs_offspring, #The PGS values of the affected probands (chil
   }
 
 
-  if (parental_nurture == TRUE){
+  if (parental_indirect == TRUE){
 
     if (GxE_int == FALSE){
       pgs.tdt.nurture(pgs_c = pgs_offspring,
