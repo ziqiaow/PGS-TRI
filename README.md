@@ -125,4 +125,4 @@ print(endTime - startTime)
 ```
 
 # Questions
-Please send your questions/suggestions to zwang389@jhu.edu
+This software will be constantly updated, so please send your questions/suggestions to zwang389@jhu.edu to help improve the package.
