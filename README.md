@@ -6,7 +6,7 @@ We provide a simple example for running our proposed method using simulated data
 ```
 rm(list = ls())
 require(devtools)
-source_url("https://github.com/ziqiaow/PGS-TRI/blob/main/R/PGScpt.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/PGS-TRI/blob/main/R/PGS-TRI.R?raw=TRUE")
 source_url("https://github.com/ziqiaow/PGS-TRI/blob/main/R/simulation.R?raw=TRUE")
 
 #If directly downloaded the R files from Github to your local directory 
@@ -72,14 +72,13 @@ envir = dat$E_sim[id,]
 Fit our proposed method to the randomly selected 1000 trios
 ```
 startTime <- Sys.time()
-res_sim = pgs.cpt(pgs_offspring = PRS_fam[,1], 
+res_sim = PGS.TRI(pgs_offspring = PRS_fam[,1], 
                  pgs_mother = PRS_fam[,2], 
                  pgs_father = PRS_fam[,3],
                  GxE_int = TRUE, #If GxE_int is FALSE, then fit a model without interaction effect between PGSxE. "formula" and "E" will be ignored in the function.
                  formula = ~ factor(E_sim_bin)+E_sim_norm, #For categorical variables, remember to add factor().
                  E = envir, 
-                 side = 2,
-                 numDeriv = F)
+                 side = 2)
 
 endTime <- Sys.time()
 ```
