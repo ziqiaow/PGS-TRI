@@ -2,7 +2,7 @@
 A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models for Case-Parent Trios
 
 ## Example Analysis
-We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [PGS-TRI](R/PGS-TRI.R). The R function to simulate data is available here [simulation](R/simulation.R). We also provide the R function to run the polygenic TDT (pTDT) test [pTDT](R/pTDT.R) (originally proposed by Weiner et al, Nat Genet. 2017). For PGSxE analysis, the case-only method is also implemented here [case-only](R/case-only.R) (cite Allison et al, AJE 2019; Wang et al, AJE 2024).
+We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [PGS-TRI](R/PGS-TRI.R). The R function to simulate data is available here [simulation](R/simulation.R). We also provide the R function to run the polygenic TDT (pTDT) test [pTDT](R/pTDT.R) (originally proposed by Weiner et al, Nat Genet. 2017). For PGSxE analysis, the case-only method is also implemented here [case-only](R/case-only.R) (Allison et al, AJE 2019; Wang et al, AJE 2024).
 ```
 rm(list = ls())
 require(devtools)
