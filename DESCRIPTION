@@ -1,6 +1,6 @@
 Package: PGS.TRI
 Title: A unified framework for the estimation of polygenic direct effect, indirect effect, and GxE interactions in case-parent trio studies
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Ziqiao", "Wang", , "zwang389@jhu.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3383-8670"))
