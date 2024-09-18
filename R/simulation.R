@@ -1,5 +1,5 @@
 #' @title Simulation
-#' @description Simulate case-parent trio data
+#' @description Simulate case-parent trio data and environmental variables in the population
 #'
 #' @param n_fam The total number of trios in the population, recommend values larger than 100000
 #' @param cor_e_prs Whether there are correlations between PGS and E

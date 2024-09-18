@@ -48,5 +48,5 @@ A list of data from simulation
 \item{pgs_fam}{PGS values of trios}
 }
 \description{
-Simulate case-parent trio data
+Simulate case-parent trio data and environmental variables in the population
 }
