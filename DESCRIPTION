@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Ziqiao", "Wang", , "zwang389@jhu.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3383-8670"))
-Description: What the package does (one paragraph).
+Description: PGS-TRI is for the analysis of polygenic scores (PGS) or polygenic risk scores (PRS) in case-parent trio studies for estimation of the risk of an index condition associated with direct effects of inherited PGS, indirect effects of parental PGS, and gene-environment interactions under a unified log-linear modeling framework. This tool can characterize genetic risks of diseases in the presence of population structure, assortative mating, and indirect genetic effects.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
