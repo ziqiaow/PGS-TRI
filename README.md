@@ -11,7 +11,7 @@ library(devtools)
 install_github("ziqiaow/PGS.TRI")
 ```
 
-If you want to only use specific functions, you can also do this 
+If you only want to use specific functions, you can also do this 
 ```
 rm(list = ls())
 require(devtools)
