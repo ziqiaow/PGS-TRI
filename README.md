@@ -1,16 +1,16 @@
-# PRS-TRI
+# PGS-TRI
 A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models for Case-Parent Trios
 
 ## Example Analysis
-We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [PRS-TRI](R/PGScpt.R). The R function to simulate data is available here [simulation](R/simulation.R).
+We provide a simple example for running our proposed method using simulated data. The R function of the proposed method is in [PGS-TRI](R/PGS-TRI.R). The R function to simulate data is available here [simulation](R/simulation.R).
 ```
 rm(list = ls())
 require(devtools)
-source_url("https://github.com/ziqiaow/PRS-TRI/blob/main/R/PGScpt.R?raw=TRUE")
-source_url("https://github.com/ziqiaow/PRS-TRI/blob/main/R/simulation.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/PGS-TRI/blob/main/R/PGScpt.R?raw=TRUE")
+source_url("https://github.com/ziqiaow/PGS-TRI/blob/main/R/simulation.R?raw=TRUE")
 
 #If directly downloaded the R files from Github to your local directory 
-source("./R/PGScpt.R")
+source("./R/PGS-TRI.R")
 source("./R/simulation.R")
 ```
 First simulate 200000 families based on a population disease risk model following a logistic regression with PGS main effect, two independent environmental variables $E_1$ (binary) and $E_2$ (continuous), and their interaction effect with PGS. Assume the marginal disease prevalence is Pr(D=1)=0.01.
