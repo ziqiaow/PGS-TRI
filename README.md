@@ -1,7 +1,7 @@
 # PGS.TRI
 A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models for Case-Parent Trios
 
-<img src="https://github.com/user-attachments/assets/a09ac2d4-3dac-4391-a31f-4bf3f7adc238" width=80% height=80%>
+<img src="https://github.com/user-attachments/assets/a09ac2d4-3dac-4391-a31f-4bf3f7adc238" width=65% height=65%>
 
 
 ## Install R Pacakge
