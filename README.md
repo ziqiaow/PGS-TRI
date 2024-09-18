@@ -1,4 +1,4 @@
-# PGS-TRI
+# PGS.TRI
 A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models for Case-Parent Trios
 
 ## Example Analysis
