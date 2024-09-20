@@ -24,7 +24,7 @@ source("./R/simulation.R")
 ```
 
 ## Required Data for the Analysis
-The required data as input for this software are simple: PGS values for mothers, fathers, and children are needed. If PGSxE interactions are also needed, then a set of environmental variables for children are required.  
+The required data as input for this software are simple: PGS values for mothers, fathers, and children are needed. If PGSxE interactions are to be investigated, then a set of environmental variables for children are required. Note that only these environmental variables for interactions need to be prepared. By nature, our model is comparing within families so any environmental varialbes or confounders will be corrected (so no need to prepare data such as genetic principal components to include in the model input, unless your task is to look into PGSxPCs!). In math, the main effect of environmental variables are cancelled out in the numerator and denominator!
 
 You can construct PGS for trios using pre-trained weights available on previously reported sources using external data, such as [PGScatalog](https://www.pgscatalog.org/), following steps described for unrelated individuals using softwares such as PLINK/2.0.
 
