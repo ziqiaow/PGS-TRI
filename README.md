@@ -4,7 +4,7 @@ A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models f
 <img src="https://github.com/user-attachments/assets/a09ac2d4-3dac-4391-a31f-4bf3f7adc238" width=65% height=65%>
 
 
-## Install R Pacakge
+## Install R Package
 The pacakge can be easily installed from Github
 ```
 library(devtools)
