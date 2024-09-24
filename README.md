@@ -5,7 +5,7 @@ A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models f
 
 
 ## Install R Package
-The pacakge can be easily installed from Github
+The package can be easily installed from Github
 ```
 library(devtools)
 install_github("ziqiaow/PGS.TRI")
