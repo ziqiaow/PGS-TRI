@@ -103,7 +103,7 @@ res_sim = PGS.TRI(pgs_offspring = PRS_fam[,1],
 endTime <- Sys.time()
 ```
 
-Print the final results. "Estimate" refers to log odds ratio (log OR) for rare diseases. 
+Print the final results. "Estimate" refers to log relative risk (log RR). 
 ```
 res_sim$res_beta
 #                             Estimate  Std.Error    Z.value       Pvalue
