@@ -2,6 +2,7 @@
 A Likelihood-Based Method for Risk Parameter Estimation under Polygenic Models for Case-Parent Trios
 
 **Reference**
+
 *Ziqiao Wang, Luke Grosvenor, Debashree Ray, Ingo Ruczinski, Terri Beaty, Heather Volk, Christine Ladd-Acosta, Nilanjan Chatterjee (2024). Estimation of Direct and Indirect Polygenic Effects and Gene-Environment Interactions using Polygenic Scores in Case-Parent Trio Studies
  medRxiv; https://doi.org/10.1101/2024.10.08.24315066
 
